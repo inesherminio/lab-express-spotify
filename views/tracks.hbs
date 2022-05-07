@@ -1,0 +1,18 @@
+<div class="top-link">
+  <a href="/" class="btn btn-primary">Go back</a>
+</div>
+
+<div class="track-list">
+  <div class="track">
+    <h2>Track</h2>
+    <h2>Listen</h2>
+  </div>
+  {{#each albumTracks}}
+    <div class="track">
+      <h3>{{this.name}}</h3>
+      <audio id="audio" controls>
+        <source src="{{this.preview_url}}" />
+      </audio>
+    </div>
+  {{/each}}
+</div>

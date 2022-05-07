@@ -2,6 +2,8 @@
 <div class="row">
 {{#each dataArtists}}
     <div class="card col-3" style="width: 18rem;">
+        {{! There may be some artists without image assigned so, in order to avoid errors and bad UX/UI, you should use the the if/else helpers
+        like you used in artists.hbs. If the image/url exists, then display it, if not/else display a generic image }}
         <img src="{{this.images.[1].url}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{this.name}}</h5>
@@ -12,4 +14,6 @@
 {{/each}}
 </div>
 
+{{!-- You can see that your artist-search-results and albums views are pretty similar in terms
+of information displayed. That means its a good opportnity to use a partial, so that you dont need to write the same code 2x --}}
 

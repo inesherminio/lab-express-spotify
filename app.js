@@ -27,8 +27,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/artist-search", async (req, res) => {
+  /* Just knit-picking, but instead of using req.query and req.params inside the methods,
+  destructure them in a variable, like you do with the variable that holds the result */
+  const { artistSearch } = req.query;
   spotifyApi
-    .searchArtists(req.query.artistSearch)
+    .searchArtists(artistSearch)
     .then((data) => {
       const artistResults = data.body.artists.items;
       res.render("artist-search-results", { artistResults });
@@ -39,8 +42,9 @@ app.get("/artist-search", async (req, res) => {
 });
 
 app.get("/albums/:artistId", (req, res) => {
+  const { artistId } = req.params;
   spotifyApi
-    .getArtistAlbums(req.params.artistId)
+    .getArtistAlbums(artistId)
     .then((data) => {
       const artistAlbums = data.body.items;
       res.render("albums", { artistAlbums });
@@ -51,8 +55,9 @@ app.get("/albums/:artistId", (req, res) => {
 });
 
 app.get("/tracks/:albumId", (req, res) => {
+  const { artistId } = req.params;
   spotifyApi
-    .getAlbumTracks(req.params.albumId)
+    .getAlbumTracks(albumId)
     .then((data) => {
       const albumTracks = data.body.items;
       res.render("tracks", { albumTracks });

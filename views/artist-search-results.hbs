@@ -5,6 +5,7 @@
 <div class="card-grid">
   {{#each artistResults}}
     <div class="card">
+      {{!-- Should do the same here for the image. Only show it if it exists --}}
       <img src={{this.images.0.url}} class="card-img-top" alt={{this.name}} />
       <div class="card-body">
         <h5 class="card-title">{{this.name}}</h5>

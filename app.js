@@ -46,8 +46,10 @@ const spotifyApi = new SpotifyWebApi({
   
   
 app.get('/albums/:artistId', (req, res, next) => {
+  /* Just like you did with req.query on the search route, destructure req.params to use it. Works the same, but in the long term gets more organized */
+  const { artistId } = req.params
   spotifyApi
-  .getArtistAlbums(req.params.artistId)
+  .getArtistAlbums(artistId)
   .then(
     (data =>{
       const items = data.body.items;
@@ -61,8 +63,8 @@ app.get('/albums/:artistId', (req, res, next) => {
 
 
 app.get('/tracks/:albumId', (req, res) => {
-  
-  spotifyApi.getAlbumTracks(req.params.albumId)
+  const { artistId } = req.params
+  spotifyApi.getAlbumTracks(albumId)
   .then( data => {
     const tracks = data.body.items;
    

@@ -2,6 +2,7 @@
     {{#each items}}
         <div class="card">
               <div class="imgContainer">
+                  {{!-- Great job with the #if. Makes total sense to only display the image if it exists, avoids many errors and ungly UI --}}
                 {{#if this.images}}
                      <img src="{{this.images.1.url}}" alt="" width="200">
                  {{else}}

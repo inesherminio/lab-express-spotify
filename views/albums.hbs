@@ -1,19 +1,23 @@
 <div class="container">
 
-    <h1>Albums</h1>
-    <div class="albums cnt">
-        {{#each items}}
+  <h1>Albums</h1>
+  <div class="albums cnt">
+    {{#each items}}
+      {{! By closing the if only at the end, you're basically only displaying the album if the image exists.
+        You want to display the album every time, even if the image does not exists, however if the image does not exists you dont want to show it }}
+      {{! Can even add and else and, in case it doesnt exist, display a spotify image instead }}
+      <div class="card">
         {{#if this.images.0.url}}
-        <div class="card">
-            <img src="{{this.images.0.url}}" alt="" width="200">
-            <div class="info">
-                <p>{{this.name}}</p>
-                {{!-- The naming of href should be the same as in the app.get  --}}
-                <a href="/tracks/{{this.id}}">
-                <button>View tracks</button></a>
-            </div>
-        </div>
+          <img src="{{this.images.0.url}}" alt="" width="200" />
         {{/if}}
-        {{/each}}
-    </div>
+        <div class="info">
+          <p>{{this.name}}</p>
+          {{! The naming of href should be the same as in the app.get  }}
+          <a href="/tracks/{{this.id}}">
+            <button>View tracks</button></a>
+        </div>
+      </div>
+
+    {{/each}}
+  </div>
 </div>

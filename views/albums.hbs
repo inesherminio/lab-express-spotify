@@ -1,12 +1,18 @@
 <h1>Albums for: {{this.artists}}</h1>
 <div class="card col-3" style="width: 18rem;">
-    {{#each albums}}
-        <div class="card">
-            <img src="{{this.images.0.url}}" class="card-image" alt="{{this.name}} image">
-            <div class="card-text-and-button">
-                <h3>{{this.name}}</h3>
-                <a class="view-tracks-button" href="/tracks/{{this.id}}">View Tracks</a>
-            </div>    
-        </div>
-    {{/each}}
+  {{#each albums}}
+    <div class="card">
+      {{! There may be some artists without image assigned so, in order to avoid errors and bad UX/UI, you should use the the if/else helpers
+        like you used in artists.hbs. If the image/url exists, then display it, if not/else display a generic image }}
+      <img
+        src="{{this.images.0.url}}"
+        class="card-image"
+        alt="{{this.name}} image"
+      />
+      <div class="card-text-and-button">
+        <h3>{{this.name}}</h3>
+        <a class="view-tracks-button" href="/tracks/{{this.id}}">View Tracks</a>
+      </div>
+    </div>
+  {{/each}}
 </div>
